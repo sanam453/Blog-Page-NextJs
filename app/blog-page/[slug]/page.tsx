@@ -32,12 +32,9 @@ export async function BlogPage({
     .eq("slug", slug)
     .single();
 
-  console.log(error);
-
   if (error) {
     return <div>Error</div>;
   }
-
 
   return (
     <React.Suspense fallback={<Loading />}>

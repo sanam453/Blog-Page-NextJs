@@ -61,9 +61,7 @@ export async function Blog({ searchParams }: { searchParams: any }) {
             <Typography type="p" className="font-bold">
               Latest Posts
             </Typography>
-            {data.map((product) => (
-              <LatestPosts key={product.id} product={product} />
-            ))}
+            <LatestPosts />
           </div>
         </div>
       </section>
