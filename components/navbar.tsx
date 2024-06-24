@@ -1,11 +1,12 @@
 "use client";
 
 import * as React from "react";
+
+// @components
 import { Typography, Card, Input } from "@material-tailwind/react";
 
+// @icons
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-
-import Favorites from "./favorites";
 
 export function Navbar() {
   return (

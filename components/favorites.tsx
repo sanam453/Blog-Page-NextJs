@@ -13,7 +13,6 @@ import {
 import { useCart } from "@/context/cart-context";
 import {
   EyeIcon,
-  XCircleIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import {
@@ -26,10 +25,6 @@ function Favorites() {
 
   function onRemoveItem(slug: string) {
     setItems((prev) => prev.filter((item) => item.slug !== slug));
-  }
-
-  function onClearCart() {
-    setItems([]);
   }
 
   const isItems = items.length > 0;

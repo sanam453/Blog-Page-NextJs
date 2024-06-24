@@ -44,7 +44,7 @@ export function Hero() {
   }
 
   return (
-    <div className="my-10 container">
+    <div data-loading={isPending ? "" : undefined} className="my-10 container">
       <div className="flex flex-wrap items-center justify-center md:justify-start mb-6 gap-4">
         {CATEGORIES.map((category) => {
           const isActive = isPending

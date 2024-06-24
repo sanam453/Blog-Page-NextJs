@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import { mtConfig } from "@material-tailwind/react";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 const config: Config = {
   content: [
@@ -29,6 +30,7 @@ const config: Config = {
     },
   },
   plugins: [mtConfig],
+  tailwindcssAnimate,
 };
 
 export default config;

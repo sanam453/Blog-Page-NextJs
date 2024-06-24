@@ -4,10 +4,8 @@ import * as React from "react";
 import Image from "next/image";
 import { Typography, Card, CardBody, Chip } from "@material-tailwind/react";
 
-// @context
-import { useCart } from "@/context/cart-context";
+// @database
 import { createClient } from "@/lib/supabase/server";
-import { notFound } from "next/navigation";
 
 export async function LatestPosts() {
   const supabase = createClient();
@@ -32,13 +30,13 @@ export async function LatestPosts() {
         />
       </div>
       <CardBody>
-        <Chip variant="ghost" className="px-2 text-primary text-xs font-medium">
+        <Chip variant="ghost" className="px-2 text-primary text-xs font-medium capitalize">
           {product?.category}
         </Chip>
         <Typography type="p" className="font-semibold mt-1">
           {product?.name}
         </Typography>
-        <Typography type="small" className="my-1 text-foreground">
+        <Typography type="small" className="my-1 text-foreground font-normal">
           {product?.desc}
         </Typography>
       </CardBody>

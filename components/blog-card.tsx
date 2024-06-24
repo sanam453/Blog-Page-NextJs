@@ -13,9 +13,11 @@ import { BookmarkIcon, EyeIcon } from "@heroicons/react/24/outline";
 
 // @hooks
 import { useCart } from "@/context/cart-context";
+import { Skeleton } from "@nextui-org/skeleton";
 
 export function BlogCard({ product }: { product: any }) {
   const { items, setItems } = useCart();
+  const [isHovered, setIsHovered] = React.useState(false);
 
   const isItemInCart = React.useMemo(
     () => items.some((item) => item.slug === product?.slug),
@@ -25,7 +27,6 @@ export function BlogCard({ product }: { product: any }) {
   function addToSave(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     event.stopPropagation();
-    
 
     const cartItem = {
       slug: product?.slug,
@@ -47,7 +48,12 @@ export function BlogCard({ product }: { product: any }) {
   }
 
   return (
-    <Card className="relative group rounded-lg">
+    <Card
+      data-hover={isHovered}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="relative group rounded-lg"
+    >
       <Card.Header className="m-0 w-full h-full min-h-[16rem]">
         <Image
           width={512}
@@ -57,8 +63,8 @@ export function BlogCard({ product }: { product: any }) {
           src={product?.image}
         />
       </Card.Header>
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/80 group-hover:via-black/70 group-hover:to-black/70"></div>
-      <div className="absolute inset-0 translate-y-[60%] text-center grid place-items-center transition-all duration-500 group-hover:translate-y-0">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-data-[hover=true]:from-black/80 group-data-[hover=true]:via-black/70 group-data-[hover=true]:to-black/70"></div>
+      <div className="absolute inset-0 translate-y-[60%] text-center grid place-items-center transition-all duration-500 group-data-[hover=true]:translate-y-0">
         <div className="flex gap-2">
           <Tooltip>
             <Tooltip.Trigger>
@@ -82,20 +88,25 @@ export function BlogCard({ product }: { product: any }) {
             </Tooltip.Content>
           </Tooltip>
           <Tooltip>
-            <Tooltip.Trigger className="rounded-full px-2.5 py-1.5" color="secondary" as={Button} onClick={addToSave}>
+            <Tooltip.Trigger
+              className="rounded-full px-2.5 py-1.5"
+              color="secondary"
+              as={Button}
+              onClick={addToSave}
+            >
               {/** @ts-ignore */}
               <BookmarkIcon className="w-5 h-5 stroke-2" />
             </Tooltip.Trigger>
             <Tooltip.Content className="px-2.5 py-1.5 text-primary-foreground">
               <Typography className="data-[type=p]:font-semibold">
-              {isItemInCart ? "Unsave" : "Save"}
+                {isItemInCart ? "Unsave" : "Save"}
               </Typography>
               <Tooltip.Arrow />
             </Tooltip.Content>
           </Tooltip>
         </div>
       </div>
-      <Card.Body className="absolute grid items-end inset-0 transition-all duration-500 translate-y-0 group-hover:translate-y-[50%]">
+      <Card.Body className="absolute grid items-end inset-0 transition-all duration-500 translate-y-0 group-data-[hover=true]:translate-y-[50%]">
         <div className="flex items-end gap-4 justify-between">
           <div className="grid gap-1">
             <Typography type="small" color="secondary" className="font-bold">
@@ -124,5 +135,68 @@ export function BlogCard({ product }: { product: any }) {
         </div>
       </Card.Body>
     </Card>
+  );
+}
+
+export function BlogCardLoading() {
+  return (
+    <div className="container mx-auto mb-10 space-y-4 px-0">
+      <div className="space-y-4">
+        <Card className="w-[288px] h-[417px] relative z-0 p-2 rounded-lg shadow-none">
+          <Skeleton className="rounded-lg bg-stone-300">
+            <div className="h-[400px]" />
+          </Skeleton>
+          <Skeleton className="rounded-lg w-40 bg-stone-200 absolute z-10 inset-0 mx-4 h-3 translate-y-[344px]"></Skeleton>
+          <Skeleton className="rounded-lg w-20 bg-stone-200 absolute z-10 inset-0 mx-4 h-3 translate-y-[366px]"></Skeleton>
+        </Card>
+        <Card className="w-[286px] h-[417px] relative z-0 p-2 rounded-lg shadow-none">
+          <Skeleton className="rounded-lg bg-stone-300">
+            <div className="h-[400px]" />
+          </Skeleton>
+          <Skeleton className="rounded-lg w-40 bg-stone-200 absolute z-10 inset-0 mx-4 h-3 translate-y-[344px]"></Skeleton>
+          <Skeleton className="rounded-lg w-20 bg-stone-200 absolute z-10 inset-0 mx-4 h-3 translate-y-[366px]"></Skeleton>
+        </Card>
+      </div>
+    </div>
+  );
+}
+
+export function LatestCardLoading() {
+  return (
+    <div className="flex flex-col">
+      <Card className="w-[286px] h-[57px] relative z-0 p-2 rounded-lg shadow-none">
+        <Skeleton className="rounded-lg bg-stone-300">
+          <div className="h-[39px]" />
+        </Skeleton>
+        <Skeleton className="rounded-lg w-32 bg-stone-200 absolute z-10 inset-0 mx-auto h-3 translate-y-[22px]"></Skeleton>
+      </Card>
+      <Skeleton className="rounded-lg w-32 bg-stone-200 h-3 mt-12 mb-6"></Skeleton>
+      <div className="space-y-4 grid">
+        <Card className="w-[286px] h-[223px] p-2 rounded-lg shadow-none">
+          <Skeleton className="rounded-lg bg-stone-300">
+            <div className="h-[122px]" />
+          </Skeleton>
+          <Skeleton className="rounded-lg w-16 bg-stone-200 h-3 my-4"></Skeleton>
+          <Skeleton className="rounded-lg w-20 bg-stone-200 h-3 mb-3"></Skeleton>
+          <Skeleton className="rounded-lg w-24 bg-stone-200 h-3"></Skeleton>
+        </Card>
+        <Card className="w-[286px] h-[223px] p-2 rounded-lg shadow-none">
+          <Skeleton className="rounded-lg bg-stone-300">
+            <div className="h-[122px]" />
+          </Skeleton>
+          <Skeleton className="rounded-lg w-16 bg-stone-200 h-3 my-4"></Skeleton>
+          <Skeleton className="rounded-lg w-20 bg-stone-200 h-3 mb-3"></Skeleton>
+          <Skeleton className="rounded-lg w-24 bg-stone-200 h-3"></Skeleton>
+        </Card>
+        <Card className="w-[286px] h-[223px] p-2 rounded-lg shadow-none">
+          <Skeleton className="rounded-lg bg-stone-300">
+            <div className="h-[122px]" />
+          </Skeleton>
+          <Skeleton className="rounded-lg w-16 bg-stone-200 h-3 my-4"></Skeleton>
+          <Skeleton className="rounded-lg w-20 bg-stone-200 h-3 mb-3"></Skeleton>
+          <Skeleton className="rounded-lg w-24 bg-stone-200 h-3"></Skeleton>
+        </Card>
+      </div>
+    </div>
   );
 }

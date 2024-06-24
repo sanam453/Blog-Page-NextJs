@@ -15,7 +15,8 @@ export const metadata: Metadata = {
 };
 
 // components
-import { Navbar, Footer, Providers } from "@/components";
+import { Navbar, Footer } from "@/components";
+import { Providers } from "./components";
 
 export default function RootLayout({
   children,
