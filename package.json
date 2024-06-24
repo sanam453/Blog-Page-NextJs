@@ -10,7 +10,7 @@
     "db:migrate": "drizzle-kit push:pg",
     "db:generate": "drizzle-kit generate:pg",
     "db:build": "bun run db:generate && bun run db:migrate"
-  },
+      },
   "dependencies": {
     "@material-tailwind/react": "beta",
     "@nextui-org/skeleton": "^2.0.28",

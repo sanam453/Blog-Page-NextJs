@@ -13,7 +13,7 @@ export async function ContentGrid({ searchParams }: { searchParams: any }) {
   const { data, error } = await supabase
     .from("products")
     .select("*")
-    .eq("categorry", searchParams?.sort || "food");
+    .eq("category", searchParams?.sort || "food");
 
   if (error) {
     return (
