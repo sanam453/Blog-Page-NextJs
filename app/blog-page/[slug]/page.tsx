@@ -45,8 +45,7 @@ export default async function BlogPage({
           href="/"
           size="sm"
           variant="ghost"
-          className="flex gap-2 items-center max-w-fit mt-8 mb-4"
-        >
+          className="flex gap-2 items-center max-w-fit mt-8 mb-4">
           <ArrowLeftIcon className="h-3 w-3 stroke-2" />
           Back to Templates
         </Button>
@@ -130,4 +129,3 @@ export default async function BlogPage({
     </React.Suspense>
   );
 }
-
