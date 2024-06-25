@@ -47,7 +47,6 @@ export default async function BlogPage({
           variant="ghost"
           className="flex gap-2 items-center max-w-fit mt-8 mb-4"
         >
-          {/** @ts-ignore */}
           <ArrowLeftIcon className="h-3 w-3 stroke-2" />
           Back to Templates
         </Button>
@@ -104,7 +103,6 @@ export default async function BlogPage({
                 </Typography>
                 <div className="flex gap-2">
                   <div className="flex items-center gap-1">
-                    {/** @ts-ignore */}
                     <HeartIcon className="h-4 w-4" />
                     <Typography
                       type="small"
