@@ -12,7 +12,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import Loading from "./loading";
 
-export async function BlogPage({
+export default async function BlogPage({
   params,
   searchParams,
 }: {
@@ -133,4 +133,3 @@ export async function BlogPage({
   );
 }
 
-export default BlogPage;
